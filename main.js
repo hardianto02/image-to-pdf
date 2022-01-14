@@ -1,10 +1,10 @@
 const PDFDocument = require('pdfkit');
 const sizes = require("./sizes.json")
 //const fetch = require("node-fetch")
- function getBuffer(url) {
-	const response = fetch(url)
-	const arr = response.arrayBuffer()
-	const buffer =  Buffer.from(arr)
+ async function getBuffer(url) {
+	const response = await fetch(url)
+	const arr = await response.arrayBuffer()
+	const buffer = Buffer.from(arr)
 	return buffer
 }
 const topdf = (pages, size) => {
@@ -12,7 +12,7 @@ const topdf = (pages, size) => {
 	
 	for (let index = 0; index < pages.length; index++) {
 		console.log(pages[index])
-		const image = getBuffer(pages[index])
+		const image = (getBuffer(pages[index])).then(b => b)
 		doc.image(image, 0, 0, { fit: sizes[size], align: 'center', valign: 'center' });
 
 		if (pages.length != index + 1) doc.addPage();
