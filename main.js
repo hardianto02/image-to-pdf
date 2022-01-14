@@ -12,7 +12,7 @@ const topdf = async (pages, size) => {
     const doc = new PDFDocument({ margin: 0, size })
 	for await (let page of pages) {
 		console.log(page)
-		const image = await getBuffer(url)
+		const image = await getBuffer(page)
 		doc.image(image, 0, 0, { fit: sizes[size], align: 'center', valign: 'center' })
 		if (pages.length != index + 1) doc.addPage()
 	}
