@@ -7,7 +7,7 @@ async function getBuffer(url) {
 	const buffer =  Buffer.from(arr)
 	return buffer
 }
-module.exports = async (pages, size) => {
+const topdf = async (pages, size) => {
     const doc = new PDFDocument({ margin: 0, size });
 	
 	for (let index = 0; index < pages.length; index++) {
@@ -22,3 +22,4 @@ module.exports = async (pages, size) => {
 
     return doc
 };
+module.exports = {topdf}
