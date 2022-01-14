@@ -7,11 +7,12 @@ async function getBuffer(url) {
 	const buffer =  Buffer.from(arr)
 	return buffer
 }
-module.exports = (pages, size) => {
+module.exports = async (pages, size) => {
     const doc = new PDFDocument({ margin: 0, size });
 	
 	for (let index = 0; index < pages.length; index++) {
-		const image = getBuffer(pages[index])
+		console.log(pages[index])
+		const image = await getBuffer(pages[index])
 		doc.image(image, 0, 0, { fit: sizes[size], align: 'center', valign: 'center' });
 
 		if (pages.length != index + 1) doc.addPage();
