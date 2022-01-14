@@ -13,6 +13,7 @@
   "main": "main.js",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^2.1.0",
     "pdfkit": "^0.13.0"
   }
 }
