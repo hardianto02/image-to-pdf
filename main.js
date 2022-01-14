@@ -1,7 +1,7 @@
 const PDFDocument = require('pdfkit');
 const sizes = require("./sizes.json")
 //const fetch = require("node-fetch")
-function getBuffer(url) {
+async function getBuffer(url) {
 	const response = await fetch(url)
 	const arr = await response.arrayBuffer()
 	const buffer =  Buffer.from(arr)
